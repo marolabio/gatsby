@@ -34,12 +34,19 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `).then(res => {
-    if(res.errors) {return Promise.reject(res.errors)}
+    if (res.errors) {
+      return Promise.reject(res.errors)
+    }
 
-    res.data.allPropertiesJson.edges.forEach(({node}) =>{
+    res.data.allPropertiesJson.edges.forEach(({ node }) => {
       createPage({
         path: node.page,
-        component: template
+        component: template,
+
+        // Send additional data to page from JSON (or query inside template)
+        context: {
+          path: node.page,
+        },
       })
     })
   })

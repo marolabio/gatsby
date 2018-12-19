@@ -4,11 +4,10 @@ import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 
 const Property = ({ data }) => {
-  const property = data
-  console.log(property)
+  const property = data.propertiesJson
   return (
     <div>
-      <Link to="/blog">Go Back</Link>
+      <Link to="/">Go Back</Link>
       <hr />
       <h1>{property.property_name}</h1>
     </div>
